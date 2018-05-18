@@ -21,7 +21,7 @@ else:
     print('Usage: python3 ramadanTimes.py or python3 ramadanTimes.py [location]')
     exit()
 
-### finds fajr [today], fajr [tomorrow], and maghrib based on your location
+#### finds fajr [today], fajr [tomorrow], and maghrib based on your location
 if day == monthDays[month]:
     fajrDay = 1
     fajrMonth = (month + 1) % 12
