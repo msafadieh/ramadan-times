@@ -4,8 +4,7 @@ month = int(time.strftime('%m'))
 year = int(time.strftime('%Y'))
 day = int(time.strftime('%d'))
 monthDays = []
-for i in range(1,13):
-    monthDays.append(calendar.monthrange(int(time.strftime('%Y')),i)[1])
+[monthDays.append(calendar.monthrange(int(time.strftime('%Y')),i)[1]) for i in range(1,13)]
 
 #### GETS YOUR LOCATION
 if len(sys.argv) == 1:
