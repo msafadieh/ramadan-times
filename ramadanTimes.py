@@ -23,6 +23,8 @@ else:
 if day == monthDays[month]:
     fajrDay = 1
     fajrMonth = (month + 1) % 12
+    if fajrMonth == 0:
+        fajrMonth = 12
     if month == 12:
         fajrYear = year + 1
 
