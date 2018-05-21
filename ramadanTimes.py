@@ -3,7 +3,7 @@ import requests, json, time, calendar, sys
 month = int(time.strftime('%m'))
 year = int(time.strftime('%Y'))
 day = int(time.strftime('%d'))
-monthDays = [calendar.monthrange(int(time.strftime('%Y')),i)[1] for i in range(1,13)]
+monthDays = [calendar.monthrange(time,i)[1] for i in range(1,13)]
 
 #### GETS YOUR LOCATION
 if len(sys.argv) == 1:
@@ -20,7 +20,7 @@ else:
     exit()
 
 #### finds fajr [today], fajr [tomorrow], and maghrib based on your location
-if day == monthDays[month]:
+if day == monthDays[month-1]:
     fajrDay = 1
     fajrMonth = (month + 1) % 12
     if fajrMonth == 0:
