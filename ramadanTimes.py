@@ -3,7 +3,7 @@ import requests, json, time, calendar, sys
 month = int(time.strftime('%m'))
 year = int(time.strftime('%Y'))
 day = int(time.strftime('%d'))
-monthDays = [calendar.monthrange(time,i)[1] for i in range(1,13)]
+monthDays = [calendar.monthrange(year,i)[1] for i in range(1,13)]
 
 #### GETS YOUR LOCATION
 if len(sys.argv) == 1:
