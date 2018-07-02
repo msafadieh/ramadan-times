@@ -22,7 +22,7 @@ Clone this repository to your computer.
 
 ```
 > git clone https://github.com/msafadieh/ramadan-times.git
-> cd ramadan-ramadanTimes
+> cd ramadan-times
 > python3 ramadanTimes [location]
 ```
 
