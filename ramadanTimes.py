@@ -39,10 +39,11 @@ else:
 if day == calendar.monthrange(year,month)[1]:
     fajrDay = 1
     fajrMonth = (month + 1) % 12
+    fajrYear = year
     if fajrMonth == 0:
         fajrMonth = 12
     if month == 12:
-        fajrYear = year + 1
+        fajrYear += 1
 
     url = 'http://api.aladhan.com/v1/calendarByAddress?address=%s&method=%d&month=%d&year=%d' % (location, method, month, year)
     fajrUrl = 'http://api.aladhan.com/v1/calendarByAddress?address=%s&method=%d&month=%d&year=%d' % (location, method, fajrMonth, fajrYear)
