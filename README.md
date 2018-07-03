@@ -15,7 +15,9 @@ Fajr [tomorrow]: 03:57 (EDT)
 
 2. You need to have the ```requests``` library installed. You can install it using ```pip```:
 
-```> pip install requests```
+```
+> pip install requests
+```
 
 ## Installation:
 Clone this repository to your computer.
