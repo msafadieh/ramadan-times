@@ -3,6 +3,7 @@ import requests, json, time, calendar, sys
 month = int(time.strftime('%m'))
 year = int(time.strftime('%Y'))
 day = int(time.strftime('%d'))
+base = 'http://api.aladhan.com/v1/calendarByAddress?address='
 
 # METHODS:
 # 0 - Shia Ithna-Ansari
@@ -45,8 +46,8 @@ if day == calendar.monthrange(year,month)[1]:
     if month == 12:
         fajrYear += 1
 
-    url = 'http://api.aladhan.com/v1/calendarByAddress?address=%s&method=%d&month=%d&year=%d' % (location, method, month, year)
-    fajrUrl = 'http://api.aladhan.com/v1/calendarByAddress?address=%s&method=%d&month=%d&year=%d' % (location, method, fajrMonth, fajrYear)
+    url = f'{base}{location}&method={method}&month={month}&year={year}'
+    fajrUrl = f'{base}{location}&method={method}&month={fajrMonth}&year={fajrYear}'
 
     imported = requests.get(url)
     prayerData = json.loads(imported.text)['data']
@@ -57,7 +58,7 @@ if day == calendar.monthrange(year,month)[1]:
     print('Fajr [tomorrow]: ' + fajrPrayerData[fajrDay]['timings']['Fajr'])
 else:
     fajrDay = day+1
-    url = 'http://api.aladhan.com/v1/calendarByAddress?address=%s&method=%d&month=%d&year=%d' % (location, method, month, year)
+    url = f'{base}{location}&method={method}&month={month}&year={year}'
     imported = requests.get(url)
     prayerData = json.loads(imported.text)['data']
     print('Fajr [today]: ' + prayerData[day]['timings']['Fajr'])
