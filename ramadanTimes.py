@@ -25,10 +25,10 @@ method = 2
 #### GETS YOUR LOCATION
 if len(sys.argv) == 1:
     key = '' # enter IPStack API key
-    locationURL = 'http://api.ipstack.com/check?access_key={key}'
-    locationRequest = requests.get(locationURL)
-    locationData = json.loads(locationRequest.text)
-    location = str(locationData['latitude']) + ',' + str(locationData['longitude'])
+    location_url = 'http://api.ipstack.com/check?access_key={key}'
+    location_request = requests.get(location_url)
+    locataion_data = json.loads(location_request.text)
+    location = str(locataion_data['latitude']) + ',' + str(locataion_data['longitude'])
 
 elif len(sys.argv) == 2:
     location = sys.argv[1]
@@ -39,29 +39,29 @@ else:
 
 #### finds fajr [today], fajr [tomorrow], and maghrib based on your location
 if day == calendar.monthrange(year,month)[1]:
-    fajrDay = 1
-    fajrMonth = (month + 1) % 12
-    fajrYear = year
-    if fajrMonth == 0:
-        fajrMonth = 12
+    fajr_day = 1
+    fajr_month = (month + 1) % 12
+    fajr_year = year
+    if fajr_month == 0:
+        fajr_month = 12
     if month == 12:
-        fajrYear += 1
+        fajr_year += 1
 
     url = f'{base}{location}&method={method}&month={month}&year={year}'
-    fajrUrl = f'{base}{location}&method={method}&month={fajrMonth}&year={fajrYear}'
+    fajrUrl = f'{base}{location}&method={method}&month={fajr_month}&year={fajr_year}'
 
     imported = requests.get(url)
-    prayerData = json.loads(imported.text)['data']
-    fajrImported = requests.get(fajrUrl)
-    fajrPrayerData = json.loads(fajrImported.text)['data']
-    print('Fajr [today]: ' + prayerData[day]['timings']['Fajr'])
-    print('Maghrib: ' + prayerData[day]['timings']['Maghrib'])
-    print('Fajr [tomorrow]: ' + fajrPrayerData[fajrDay]['timings']['Fajr'])
+    prayer_data = json.loads(imported.text)['data']
+    fajr_imported = requests.get(fajrUrl)
+    fajr_prayer_data = json.loads(fajr_imported.text)['data']
+    print('Fajr [today]: ' + prayer_data[day]['timings']['Fajr'])
+    print('Maghrib: ' + prayer_data[day]['timings']['Maghrib'])
+    print('Fajr [tomorrow]: ' + fajr_prayer_data[fajr_day]['timings']['Fajr'])
 else:
-    fajrDay = day+1
+    fajr_day = day+1
     url = f'{base}{location}&method={method}&month={month}&year={year}'
     imported = requests.get(url)
-    prayerData = json.loads(imported.text)['data']
-    print('Fajr [today]: ' + prayerData[day]['timings']['Fajr'])
-    print('Maghrib: ' + prayerData[day]['timings']['Maghrib'])
-    print('Fajr [tomorrow]: ' + prayerData[fajrDay]['timings']['Fajr'])
+    prayer_data = json.loads(imported.text)['data']
+    print('Fajr [today]: ' + prayer_data[day]['timings']['Fajr'])
+    print('Maghrib: ' + prayer_data[day]['timings']['Maghrib'])
+    print('Fajr [tomorrow]: ' + prayer_data[fajr_day]['timings']['Fajr'])
