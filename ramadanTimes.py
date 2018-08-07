@@ -49,11 +49,11 @@ if day == calendar.monthrange(year,month)[1]:
         fajr_year += 1
 
     url = f'{base}{location}&method={method}&month={month}&year={year}'
-    fajrUrl = f'{base}{location}&method={method}&month={fajr_month}&year={fajr_year}'
+    fajr_url = f'{base}{location}&method={method}&month={fajr_month}&year={fajr_year}'
 
     imported = requests.get(url)
     prayer_data = json.loads(imported.text)['data']
-    fajr_imported = requests.get(fajrUrl)
+    fajr_imported = requests.get(fajr_url)
     fajr_prayer_data = json.loads(fajr_imported.text)['data']
     print(f'Fajr [today]: {prayer_data[day]["timings"]["Fajr"]}')
     print(f'Maghrib: {prayer_data[day]["timings"]["Maghrib"]}')
