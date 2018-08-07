@@ -24,7 +24,9 @@ method = 2
 
 #### GETS YOUR LOCATION
 if len(sys.argv) == 1:
-    key = '' # enter IPStack API key
+    key = '' # enter ipstack API key
+    if not key:
+        exit('No valid ipstack API key.')
     location_url = f'http://api.ipstack.com/check?access_key={key}'
     location_request = requests.get(location_url)
     location_data = json.loads(location_request.text)
@@ -34,8 +36,7 @@ elif len(sys.argv) == 2:
     location = sys.argv[1]
 
 else:
-    print('Usage: python3 ramadanTimes.py or python3 ramadanTimes.py [location]')
-    exit()
+    exit('Usage: python3 ramadanTimes.py or python3 ramadanTimes.py [location]')
 
 #### finds fajr [today], fajr [tomorrow], and maghrib based on your location
 if day == calendar.monthrange(year,month)[1]:
