@@ -25,10 +25,10 @@ method = 2
 #### GETS YOUR LOCATION
 if len(sys.argv) == 1:
     key = '' # enter IPStack API key
-    location_url = 'http://api.ipstack.com/check?access_key={key}'
+    location_url = f'http://api.ipstack.com/check?access_key={key}'
     location_request = requests.get(location_url)
-    locataion_data = json.loads(location_request.text)
-    location = str(locataion_data['latitude']) + ',' + str(locataion_data['longitude'])
+    location_data = json.loads(location_request.text)
+    location = f'{location_data["latitude"]},{location_data["longitude"]}'
 
 elif len(sys.argv) == 2:
     location = sys.argv[1]
@@ -54,14 +54,14 @@ if day == calendar.monthrange(year,month)[1]:
     prayer_data = json.loads(imported.text)['data']
     fajr_imported = requests.get(fajrUrl)
     fajr_prayer_data = json.loads(fajr_imported.text)['data']
-    print('Fajr [today]: ' + prayer_data[day]['timings']['Fajr'])
-    print('Maghrib: ' + prayer_data[day]['timings']['Maghrib'])
-    print('Fajr [tomorrow]: ' + fajr_prayer_data[fajr_day]['timings']['Fajr'])
+    print(f'Fajr [today]: {prayer_data[day]["timings"]["Fajr"]}')
+    print(f'Maghrib: {prayer_data[day]["timings"]["Maghrib"]}')
+    print(f'Fajr [tomorrow]: {fajr_prayer_data[fajr_day]["timings"]["Fajr"]}')
 else:
     fajr_day = day+1
     url = f'{base}{location}&method={method}&month={month}&year={year}'
     imported = requests.get(url)
     prayer_data = json.loads(imported.text)['data']
-    print('Fajr [today]: ' + prayer_data[day]['timings']['Fajr'])
-    print('Maghrib: ' + prayer_data[day]['timings']['Maghrib'])
-    print('Fajr [tomorrow]: ' + prayer_data[fajr_day]['timings']['Fajr'])
+    print(f'Fajr [today]: {prayer_data[day]["timings"]["Fajr"]}')
+    print(f'Maghrib: {prayer_data[day]["timings"]["Maghrib"]}')
+    print(f'Fajr [tomorrow]: {prayer_data[fajr_day]["timings"]["Fajr"]}')
