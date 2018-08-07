@@ -24,7 +24,8 @@ method = 2
 
 #### GETS YOUR LOCATION
 if len(sys.argv) == 1:
-    locationURL = 'http://api.ipstack.com/check?access_key=684b90ffe5e846163a1b244e3a1bab9c'
+    key = '' # enter IPStack API key
+    locationURL = 'http://api.ipstack.com/check?access_key={key}'
     locationRequest = requests.get(locationURL)
     locationData = json.loads(locationRequest.text)
     location = str(locationData['latitude']) + ',' + str(locationData['longitude'])
