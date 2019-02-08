@@ -3,7 +3,7 @@
 A simple Python script that finds Fajr and Maghrib times using the [Prayer Times API](https://aladhan.com/prayer-times-api).
 
 ```
-> python3 ramadanTimes.py
+> python ramadanTimes.py
 Fajr [today]: 03:58 (EDT)
 Maghrib: 20:11 (EDT)
 Fajr [tomorrow]: 03:57 (EDT)
@@ -49,7 +49,7 @@ You can let the script find your location automatically based on your IP address
 You can manually input your location for the script to use it. This can be your actual city and country, your zip code, or your coordinates. Make sure it's in between quotes if a space is necessary.
 
 ```
-> python3 ramadanTimes 'Poughkeepsie, NY'
-> python3 ramadanTimes 12604
-> python3 ramadanTimes 41.7599,-73.7437
+> python ramadanTimes 'Poughkeepsie, NY'
+> python ramadanTimes 12604
+> python ramadanTimes 41.7599,-73.7437
 ```
