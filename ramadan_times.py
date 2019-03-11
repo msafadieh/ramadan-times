@@ -2,9 +2,9 @@
     Determines today's fajr and maghrib times, along tomorrow's fajr time.
 
     METHOD 1: Auto-detect location
-    The script will automatically detect your location. You will need an ipstack
-    API KEY to enable it do so. You can get one from ipstack.com and then assign
-    it to KEY (line 49).
+    The script will automatically detect your location. This will be done using
+    the am.i.mullvad.net API. If you're using a VPN/proxy, this could cause 
+    location inaccuracies.
 
     METHOD 2: Manual input
     You can manually give the script your location. This can be a ZIP code, a city
