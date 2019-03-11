@@ -11,7 +11,7 @@ Fajr [tomorrow]: 03:57 (EDT)
 
 ## Requirements:
 
-1. You need to have Python 3 installed. (On macOS you'll have to puse ```python3``` instead of ```python```)
+1. You need to have Python 3 installed. (On macOS you'll have to use ```python3``` instead of ```python```)
 
 2. You need to have the requirements installed from ```requirements.txt```  file. You can install it using ```pip```:
 
