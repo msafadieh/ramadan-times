@@ -23,7 +23,7 @@ import requests
 BASE = 'http://api.aladhan.com/v1/calendarByAddress?address='
 IP_URL = 'https://am.i.mullvad.net/json'
 
-'''
+"""
     METHODS:
     0 - Shia Ithna-Ansari
     1 - University of Islamic Sciences, Karachi
@@ -39,13 +39,13 @@ IP_URL = 'https://am.i.mullvad.net/json'
     12 - Union Organization islamic de France
     13 - Diyanet İşleri Başkanlığı, Turkey
     99 - Custom. See https://aladhan.com/calculation-methods
-'''
+"""
 METHOD = 2
 
 def get_times(location):
-    '''
+    """
         finds fajr [today], fajr [tomorrow], and maghrib based on your location
-    '''
+    """
     month = int(time.strftime('%m'))
     year = int(time.strftime('%Y'))
     day = int(time.strftime('%d'))
@@ -67,9 +67,9 @@ def get_times(location):
     return f"Fajr [today]: {fajr_today}\nMaghrib: {maghrib}\nFajr [tomorrow]: {fajr_tomorrow}"
 
 def get_location():
-    '''
+    """
         Gets your location using mullvad's API
-    '''
+    """
     response = requests.get(IP_URL).json()
     return f'{response["latitude"]}, {response["longitude"]}'
 
